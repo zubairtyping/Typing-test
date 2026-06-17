@@ -1,26 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Typing Speed Test</title>
+<title>Fast Typing Test</title>
 <style>
 body{font-family:Arial;text-align:center;padding:50px;background:#f0f0f0}
-#box{width:80%;height:150px;margin:20px auto;padding:15px;font-size:18px}
-button{padding:10px 25px;font-size:16px;background:#28a745;color:white;border:none;cursor:pointer}
-#result{margin-top:20px;font-size:20px;font-weight:bold}
+textarea{width:80%;height:100px;font-size:18px;padding:10px}
+button{background:green;color:white;padding:12px 25px;border:none;font-size:18px;cursor:pointer;margin-top:10px}
+#result{margin-top:20px;font-size:22px;font-weight:bold;color:blue}
 </style>
 </head>
 <body>
 <h1>Fast Typing Test</h1>
-<p>Neeche wale text ko type karo:</p>
+<p>Neeeche wale text ko type karo:</p>
 <p><b>The quick brown fox jumps over the lazy dog</b></p>
-<textarea id="box" placeholder="Yahan type karo..."></textarea><br>
-<button onclick="check()">Check Speed</button>
+<textarea id="text" placeholder="Yahan type karo..."></textarea><br>
+<button onclick="checkSpeed()">Check Speed</button>
 <div id="result"></div>
 <script>
-function check(){
-let text=document.getElementById('box').value;
-let words=text.trim().split(' ').length;
-document.getElementById('result').innerHTML='Words: '+words+' | Accuracy check karo manually';
+let startTime;
+document.getElementById('text').onfocus = function(){
+  if(!startTime) startTime = new Date();
+};
+function checkSpeed(){
+  if(!startTime){
+    alert("Pehle box mein click karke type karo!");
+    return;
+  }
+  let endTime = new Date();
+  let time = (endTime - startTime)/60000;
+  let words = document.getElementById('text').value.trim().split(/\s+/).length;
+  let wpm = Math.round(words/time);
+  document.getElementById('result').innerHTML = "Your Speed: " + wpm + " WPM 🔥";
 }
 </script>
 </body>
