@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Typing Speed Test</title>
+<style>
+body{font-family:Arial;text-align:center;padding:50px;background:#f0f0f0}
+#box{width:80%;height:150px;margin:20px auto;padding:15px;font-size:18px}
+button{padding:10px 25px;font-size:16px;background:#28a745;color:white;border:none;cursor:pointer}
+#result{margin-top:20px;font-size:20px;font-weight:bold}
+</style>
+</head>
+<body>
+<h1>Fast Typing Test</h1>
+<p>Neeche wale text ko type karo:</p>
+<p><b>The quick brown fox jumps over the lazy dog</b></p>
+<textarea id="box" placeholder="Yahan type karo..."></textarea><br>
+<button onclick="check()">Check Speed</button>
+<div id="result"></div>
+<script>
+function check(){
+let text=document.getElementById('box').value;
+let words=text.trim().split(' ').length;
+document.getElementById('result').innerHTML='Words: '+words+' | Accuracy check karo manually';
+}
+</script>
+</body>
+</html>
